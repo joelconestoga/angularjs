@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="phoneBook">
+<head>
+	<title>Phone Book</title>
+	<meta charset="utf-8">
+	
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/superhero.css">
+	<style type="text/css">
+		.jumbotron {
+			width: 400px;
+			text-align: center;
+			margin-top: 20px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.table {
+			margin-top: 20px;
+		}
+		.form-control {
+			margin-bottom: 5px;
+		}
+	</style>
+
+	<script type="text/javascript" src="lib/angular/angular.js"></script>
+	<script type="text/javascript">
+		angular.module("phoneBook", []);
+		angular.module("phoneBook").controller("phoneBookController", function($scope) {
+			 $scope.app = "Phone Book";
+			 $scope.contacts = [
+			 	{name: "Joel", phone: "987897797"},
+			 	{name: "Joel", phone: "987897797"},
+			 	{name: "Joel", phone: "987897797"},
+			 ];
+			 $scope.addContatc = function(contact) {
+			 	$scope.contacts.push(angular.copy(contact));
+			 	delete $scope.contact;
+			 }
+
+		})
+	</script>
+</head>
+
+<body ng-controller="phoneBookController">
+
+	<div class="jumbotron">
+		<h4>{{app}}</h4>
+
+		<table class="table table-striped">
+			<tr>
+				<th>Name</th>
+				<th>Phone</th>
+			</tr>
+			<tr ng-repeat="c in contacts">
+				<td>{{c.name}}</td>
+				<td>{{c.phone}}</td>
+			</tr>
+		</table>
+
+		<input class="form-control" type="text" name="name" ng-model="contact.name" placeholder="Name">
+		<input class="form-control" type="text" name="phone" ng-model="contact.phone" placeholder="Phone">
+
+		<button ng-click="addContatc(contact)" class="btn btn-primary btn-block">Add</button>
+
+	</div>
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
